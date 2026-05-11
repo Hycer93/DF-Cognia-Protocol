@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dfcp.org/schema/v1.0/thinking-schedule.json",
+  "title": "DFCP 1.0 思维调度协议",
+  "description": "定义AI推理过程中思维标签的调度格式与执行上下文——每个思维标签携带从哪来、到哪去、需要检索什么记忆、校验标准是什么、处于流水线哪一层。完整约束与实现规范见DFCP 1.0正式协议附件。",
+  "type": "object",
+  "properties": {
+    "pattern_id": {
+      "type": "string",
+      "description": "思维标签唯一标识，遵循DFCP协议PAT_功能_版本号格式。"
+    },
+    "pipeline_position": {
+      "type": "object",
+      "properties": {
+        "layer": { "type": "string", "description": "所属流水线层级。" },
+        "order": { "type": "integer", "description": "该层内的执行序位。" }
+      },
+      "description": "思维标签在认知流水线中的位置。"
+    },
+    "from": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger": { "type": "string", "description": "触发来源类型。" },
+          "description": { "type": "string", "description": "触发来源的描述说明。" }
+        }
+      },
+      "description": "思维标签的触发来源——哪些标签完成后可以跳转到本标签。"
+    },
+    "to": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target": { "type": "string", "description": "跳转目标标签ID。" },
+          "layer": { "type": "string", "description": "目标标签所在层级。" },
+          "type": { "type": "string", "description": "跳转关系类型（并行/前置/对冲/泛化）。" },
+          "description": { "type": "string", "description": "跳转逻辑的说明。" }
+        }
+      },
+      "description": "思维标签完成后跳转的目标标签列表。"
+    },
+    "memory_template": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "target": { "type": "string", "description": "检索记忆的关键词。" },
+          "time": { "type": "string", "description": "检索时间范围。" },
+          "limit": { "type": "integer", "description": "返回记忆条数上限。" }
+        }
+      },
+      "description": "执行本思维标签时需要检索的记忆列表。"
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_id": { "type": "string", "description": "校验规则唯一标识。" },
+          "description": { "type": "string", "description": "校验规则的描述说明。" }
+        }
+      },
+      "description": "本思维标签必须通过的校验规则列表。完整校验标准见正式协议。"
+    },
+    "failure_handler": {
+      "type": "object",
+      "properties": {
+        "retry": {
+          "type": "object",
+          "properties": {
+            "max": { "type": "integer", "description": "最大重试次数。" },
+            "delay_ms": { "type": "integer", "description": "重试间隔毫秒。" }
+          }
+        },
+        "on_exhaust": { "type": "string", "description": "重试耗尽后的处理方式。" }
+      },
+      "description": "校验失败时的处理机制。"
+    },
+    "update_point": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "description": "可更新点唯一标识。" },
+          "description": { "type": "string", "description": "可更新点的描述说明。" }
+        }
+      },
+      "description": "本思维标签中支持独立更新的节点。每个节点独立标识，更新时不影响标签内其他内容。"
+    }
+  },
+  "required": ["pattern_id", "pipeline_position", "from", "to", "verification", "failure_handler"]
+}

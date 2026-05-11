@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dfcp.org/schema/v1.0/memory-tag.json",
+  "title": "DFCP 1.0 记忆存储元数据标签",
+  "description": "每条记忆在存入时必须附带的标准元数据格式。完整约束见DFCP 1.0正式协议附件E。",
+  "type": "object",
+  "properties": {
+    "memory_id": {
+      "type": "string",
+      "description": "记忆唯一标识。"
+    },
+    "memory_type": {
+      "type": "string",
+      "description": "记忆分级类型。flash_memory=不可复现的成长路径；situational_memory=可被摘要的情景；derived_data=可被规则重新推导的数据。"
+    },
+    "domain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "领域标签，合法值域见DFCP-ANNEX-B领域树。"
+    },
+    "entity": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "实体标签，记忆涉及的核心实体名称。"
+    },
+    "event": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "事件标签，记忆关联的具体事件类型。"
+    },
+    "cognitive_value": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "认知价值标签。完整价值分类见DFCP 1.0正式协议附件E。"
+    },
+    "emotion": {
+      "type": "string",
+      "description": "情感标签，合法值域见DFCP-ANNEX-C情感树。"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "记忆生成时间，ISO 8601格式。"
+    },
+    "retrieval_priority": {
+      "type": "string",
+      "description": "检索优先级。高优先级记忆在上下文注入时获得更高权重。"
+    },
+    "source_conversation_id": {
+      "type": "string",
+      "description": "溯源锚点：记忆来源的对话ID，用于记忆可信度审计。"
+    }
+  },
+  "required": ["memory_id", "memory_type", "domain", "timestamp", "retrieval_priority", "source_conversation_id"]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dfcp.org/schema/v1.0/instruction-set.json",
+  "title": "DFCP 1.0 四项规范指令集",
+  "description": "仲裁器输出的结构化指令，定义用户意图的标准化表达。完整约束见DFCP 1.0白皮书及正式协议附件。",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "description": "用户需要AI执行的动作类型，合法值域见DFCP-ANNEX-A行为树。可同时输出多个行为，用分隔符连接。"
+    },
+    "target": {
+      "type": "string",
+      "description": "用户关注的核心实体，用于在数据库和索引网络中精准定位。合法值域见DFCP-ANNEX-B领域树。"
+    },
+    "logic_anchor": {
+      "type": "string",
+      "description": "触发分析的因果链路或规则，用于加载具体分析技能或判断记忆可复现性。多个锚点用分隔符连接。"
+    },
+    "emotion_tone": {
+      "type": "string",
+      "description": "用户的情绪状态，用于指导回复风格和筛选相关记忆。合法值域见DFCP-ANNEX-C情感树。"
+    }
+  },
+  "required": ["action", "target", "logic_anchor", "emotion_tone"],
+  "additionalProperties": false
+}
