@@ -81,7 +81,7 @@ dfcp-protocol/
 ---
 
 ## 🌐 社区与联系方式
--   **协议仓库 (GitHub)**：[[https://github.com/your-org/dfcp-protocol](https://github.com/Hycer93/DF-Cognia-Protocol)]()
+-   **协议仓库 (GitHub)**：[DFCP GitHub 仓库](https://github.com/Hycer93/DF-Cognia-Protocol)
 -   **技术讨论与提案**：请在此仓库发起 **Issue** 或 **Discussion**。
 
 ---
