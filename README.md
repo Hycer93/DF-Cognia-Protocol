@@ -21,23 +21,24 @@ DFCP 为上述问题提供了系统性的解决方案，通过定义一套中立
 ---
 
 ## 📦 项目结构
+```text
 dfcp-protocol/
-├── README.md # 项目入口
-├── LICENSE # Apache 2.0 许可证
-├── AUTHORS.md # 贡献者名单
-├── GOVERNANCE.md # 项目治理规则
+├── README.md                # 项目入口
+├── LICENSE                  # Apache 2.0 许可证
+├── AUTHORS.md               # 贡献者名单
+├── GOVERNANCE.md            # 项目治理规则
 ├── spec/
-│ └── DFCP-1.0-白皮书-公开版.md # 官方协议文档
+│   └── DFCP-1.0-白皮书-公开版.md  # 官方协议文档
 ├── schemas/
-│ ├── instruction-set.json # 调度协议：四项规范指令集
-│ ├── memory-tag.json # 记忆协议：记忆存储元数据
-│ └── thinking-schedule.json # 思维协议：思维调度任务包
+│   ├── instruction-set.json    # 调度协议：四项规范指令集
+│   ├── memory-tag.json         # 记忆协议：记忆存储元数据
+│   └── thinking-schedule.json  # 思维协议：思维调度任务包
 └── annexes/
-├── 行为树.md # 附录 A：AI 可执行的行为类型
-├── 领域树.md # 附录 B：知识的全球通用领域分类
-├── 情感树.md # 附录 C：AI 的情感识别与回复基调
-├── 仲裁器翻译手册.md # 附录 D：自然语言转化为指令的规范
-└── 记忆分级与进化管理规范.md # 附录 E：记忆资产的分级标准与进化闭环
+    ├── 行为树.md              # 附录 A：AI 可执行的行为类型
+    ├── 领域树.md              # 附录 B：知识的全球通用领域分类
+    ├── 情感树.md              # 附录 C：AI 的情感识别与回复基调
+    ├── 仲裁器翻译手册.md       # 附录 D：自然语言转化为指令的规范
+    └── 记忆分级与进化管理规范.md # 附录 E：记忆资产的分级标准与进化闭环
 
 
 ---
